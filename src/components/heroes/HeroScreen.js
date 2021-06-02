@@ -4,6 +4,8 @@ import { obtainPublisherPage } from '../../helpers/obtainPublisherPage';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { getHeroesById } from '../../selectors/getHeroById';
 
+const heroesImages = require.context( "../../heroes" );
+
 export const HeroScreen = ({ history }) => {
     const [ , obtainLocalStorage ] = useLocalStorage();
     
@@ -40,7 +42,7 @@ export const HeroScreen = ({ history }) => {
         <div clas="row mt-5">
             <div className="col-4">
                 <img 
-                src={`../assets/heroes/${ heroId }.jpg`}
+                src={heroesImages(`./${ heroId }.jpg`).default}
                 className="img-thumbnail"
                 alt={ superhero }
                 />
